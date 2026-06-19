@@ -5,7 +5,7 @@ resources:
       tasks:
         - task_key: hello_world
           spark_python_task:
-            python_file: ../../src/02_databrick_hello_world.py
+            python_file: ../../src/examples/02_databrick_hello_world.py
             parameters:
               - --examples-dir
               - /Volumes/forecasting_dev/learning/files/examples
@@ -16,4 +16,4 @@ resources:
           spec:
             environment_version: "4"
             dependencies:
-              - -r ../../requirements/requirements-serverless.txt
+              - -r ../../requirements/requirements-standard.txt

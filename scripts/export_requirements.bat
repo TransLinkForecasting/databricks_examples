@@ -5,7 +5,7 @@ set "ROOT=%~dp0..\"
 cd /d "%ROOT%"
 
 set "OUTPUT_PATH=%~1"
-if "%OUTPUT_PATH%"=="" set "OUTPUT_PATH=requirements\requirements-serverless.txt"
+if "%OUTPUT_PATH%"=="" set "OUTPUT_PATH=requirements\requirements-standard.txt"
 
 set "UV_EXE=%ROOT%.uv\uv.exe"
 if not exist "%UV_EXE%" (

@@ -5,7 +5,7 @@ resources:
       tasks:
         - task_key: main
           spark_python_task:
-            python_file: ../../src/main.py
+            python_file: ../../src/examples/main.py
           environment_key: default
 
       environments:
@@ -13,4 +13,4 @@ resources:
           spec:
             environment_version: "4"
             dependencies:
-              - -r ../../requirements/requirements-serverless.txt
+              - -r ../../requirements/requirements-standard.txt

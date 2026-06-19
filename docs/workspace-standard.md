@@ -19,7 +19,7 @@ Define a deterministic dependency workflow for Databricks workloads while using 
 
 ### 3.2 Runtime Artifact
 
-- `requirements/requirements-serverless.txt` is the deployment artifact consumed by Databricks runtime environments.
+- `requirements/requirements-standard.txt` is the deployment artifact consumed by Databricks runtime environments.
 - This file is generated only by script, not edited manually.
 
 ### 3.3 Update Flow
@@ -39,7 +39,7 @@ Use the shared bootstrap entrypoint in notebook cell 1:
 ```
 
 The bootstrap script should:
-- Install from `requirements-serverless.txt` when needed.
+- Install from `requirements-standard.txt` when needed.
 - Skip reinstall when versions already match.
 - Print a short summary of what changed.
 
@@ -58,7 +58,7 @@ CI must fail when exported requirements are stale relative to `uv.lock`.
 Required CI checks:
 - `uv lock --check`
 - Regenerate requirements in a temp path
-- Compare generated output to `requirements/requirements-serverless.txt`
+- Compare generated output to `requirements/requirements-standard.txt`
 
 ## 8. Ownership
 

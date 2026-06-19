@@ -5,7 +5,7 @@ set "ROOT=%~dp0..\"
 cd /d "%ROOT%"
 
 set "CANONICAL_PATH=%~1"
-if "%CANONICAL_PATH%"=="" set "CANONICAL_PATH=requirements\requirements-serverless.txt"
+if "%CANONICAL_PATH%"=="" set "CANONICAL_PATH=requirements\requirements-standard.txt"
 
 if not exist "%CANONICAL_PATH%" (
   echo [error] Canonical requirements file not found: %CANONICAL_PATH%
@@ -28,7 +28,7 @@ if errorlevel 1 exit /b 1
 fc /b "%CANONICAL_PATH%" "%TEMP_FILE%" >nul
 if errorlevel 1 (
   del /q "%TEMP_FILE%" >nul 2>&1
-  echo [error] requirements-serverless.txt is stale. Run scripts\export_requirements.bat and commit changes.
+  echo [error] requirements-standard.txt is stale. Run scripts\export_requirements.bat and commit changes.
   exit /b 1
 )
 

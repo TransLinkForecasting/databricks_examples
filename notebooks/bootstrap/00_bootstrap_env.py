@@ -14,9 +14,9 @@ from pathlib import Path
 
 def _find_requirements_file() -> str:
     candidates = [
-        "/Workspace/Shared/dependencies/requirements-serverless.txt",
-        "requirements/requirements-serverless.txt",
-        "../requirements/requirements-serverless.txt",
+        "/Workspace/Shared/dependencies/requirements-standard.txt",
+        "requirements/requirements-standard.txt",
+        "../requirements/requirements-standard.txt",
     ]
     for candidate in candidates:
         if Path(candidate).exists():

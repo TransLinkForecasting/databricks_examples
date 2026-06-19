@@ -65,7 +65,7 @@ This command does the full setup:
   - `tlpytools[dev,orca]`
   - dependency group `dev` (default)
 - Creates/updates `uv.lock`.
-- Exports `requirements/requirements-serverless.txt`.
+- Exports `requirements/requirements-standard.txt`.
 
 To include a model group, pass `--group` explicitly:
 
@@ -78,7 +78,7 @@ run_python_cmds.bat --group populationsim
 
 ```bat
 run_python_cmds.bat -c "import tlpytools; print('ok')"
-run_python_cmds.bat src\main.py
+run_python_cmds.bat src\examples\main.py
 run_python_cmds.bat --group activitysim -c "print('using activitysim group')"
 run_python_cmds.bat --group populationsim -c "print('using populationsim group')"
 ```
@@ -222,8 +222,8 @@ This example shows a complete flow in this repository:
 
 ### Files used
 
-- Local step script: `src/01_local_upload_data.py`
-- Databricks step script: `src/02_databrick_hello_world.py`
+- Local step script: `src/examples/01_local_upload_data.py`
+- Databricks step script: `src/examples/02_databrick_hello_world.py`
 - Job resource: `resources/jobs/hello_world_example.job.yml`
 
 ### Step 1: Generate and upload hello world CSV locally
@@ -231,7 +231,7 @@ This example shows a complete flow in this repository:
 Run this from repository root (this is local only):
 
 ```bat
-run_python_cmds.bat src\01_local_upload_data.py
+run_python_cmds.bat src\examples\01_local_upload_data.py
 ```
 
 What this does:
@@ -280,11 +280,11 @@ Expected Databricks script behavior:
 1. Develop and test locally first (`run_python_cmds.bat`).
 2. Validate with notebook on sample data in `forecasting_dev`.
 3. Run production-scale workloads via bundle-managed Jobs.
-4. Keep `requirements/requirements-serverless.txt` and `uv.lock` in sync.
+4. Keep `requirements/requirements-standard.txt` and `uv.lock` in sync.
 
 ## Notes
 
 - Python support is constrained in `pyproject.toml` to `>=3.12,<3.13`.
 - As of June 2026, `activitysim` cannot be set up as part of this Python 3.12 environment because it requires `numpy<1.26`, which is not supported in this setup.
 - If you need `activitysim`, use a separate Python 3.11 environment dedicated to that workflow.
-- Job and pipeline templates both consume `requirements/requirements-serverless.txt` so runtime dependencies stay aligned.
+- Job and pipeline templates both consume `requirements/requirements-standard.txt` so runtime dependencies stay aligned.
