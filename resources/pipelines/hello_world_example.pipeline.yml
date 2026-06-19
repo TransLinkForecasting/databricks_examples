@@ -1,7 +1,7 @@
 resources:
   pipelines:
-    standard_serverless_pipeline:
-      name: standard_serverless_pipeline
+    hello_world_example_pipeline:
+      name: hello_world_example_pipeline
       serverless: true
       catalog: forecasting_dev
       schema: learning

@@ -97,7 +97,7 @@ scripts\check_requirements_drift.bat
 
 ## 2. Run in Databricks Jobs (Large Datasets)
 
-This repo already includes a serverless job template at `resources/jobs/serverless_job_template.yml` and bundle config in `databricks.yml`.
+This repo includes a bundle-managed hello world example job and pipeline using the same dependency environment.
 
 ### Step A: Configure bundle target
 
@@ -115,7 +115,7 @@ From repository root:
 ```bat
 databricks bundle validate --target dev
 databricks bundle deploy --target dev
-databricks bundle run standard_serverless_python_job --target dev
+databricks bundle run hello_world_example --target dev
 ```
 
 ### Step C: Where to drop files in Unity Catalog `forecasting_dev`
@@ -210,7 +210,7 @@ trip_df = spark.table("forecasting_dev.demand_forecasting.trip_facts")
 
 After notebook logic is validated:
 1. Move reusable logic into Python scripts under `src/`.
-2. Point job task entrypoint to that script in `resources/jobs/serverless_job_template.yml`.
+2. Point job task entrypoint to that script in `resources/jobs/hello_world_example.job.yml`.
 3. Deploy and run with `databricks bundle deploy` and `databricks bundle run`.
 
 ## Hello World Example
@@ -225,6 +225,7 @@ This example shows a complete flow in this repository:
 - Local step script: `src/examples/01_local_upload_data.py`
 - Databricks step script: `src/examples/02_databrick_hello_world.py`
 - Job resource: `resources/jobs/hello_world_example.job.yml`
+- Pipeline resource: `resources/pipelines/hello_world_example.pipeline.yml`
 
 ### Step 1: Generate and upload hello world CSV locally
 
@@ -269,6 +270,14 @@ Run the hello world job:
 ```bat
 databricks bundle run hello_world_example --target dev
 ```
+
+Run the hello world pipeline:
+
+```bat
+databricks bundle run hello_world_example_pipeline --target dev
+```
+
+Note: Databricks bundle keys must be unique across resources. The job key is `hello_world_example` and the pipeline key is `hello_world_example_pipeline`.
 
 Expected Databricks script behavior:
 1. Finds latest `hello_world_*.csv` under `/Volumes/forecasting_dev/learning/files/examples`

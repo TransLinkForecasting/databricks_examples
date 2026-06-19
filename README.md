@@ -85,7 +85,7 @@ scripts\check_requirements_drift.bat
 - `scripts/export_requirements.bat`: Exports pinned requirements from uv lock.
 - `scripts/check_requirements_drift.bat`: Fails if lock export is stale.
 - `requirements/requirements-standard.txt`: Runtime dependency artifact.
-- `resources/jobs/serverless_job_template.yml`: Reusable job template.
-- `resources/pipelines/serverless_pipeline_template.yml`: Reusable pipeline template.
+- `resources/jobs/hello_world_example.job.yml`: Hello world job example.
+- `resources/pipelines/hello_world_example.pipeline.yml`: Hello world pipeline example.
 - `notebooks/bootstrap/00_bootstrap_env.py`: Shared notebook bootstrap entrypoint.
 - `.github/workflows/validate-dependency-alignment.yml`: CI enforcement.
