@@ -21,6 +21,16 @@ Verify installation:
 databricks -v
 ```
 
+Find your workspace host before logging in:
+
+1. Open your Databricks workspace in a browser.
+2. Copy the base URL from the address bar (scheme + host only).
+3. Remove any path/query so the value looks like one of these examples:
+
+```text
+https://abc-12345678.123.azuredatabricks.net/
+```
+
 Authenticate to your workspace:
 
 ```bat

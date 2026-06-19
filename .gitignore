@@ -3,3 +3,4 @@
 .vscode/*
 .databricks/*
 examples/*.csv
+.git-rewrite/*
