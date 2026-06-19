@@ -1,0 +1,56 @@
+name: test-uv-environment
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-uv-environment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Sync uv environment
+        run: |
+          uv sync --group dev
+
+      - name: Smoke test environment
+        run: |
+          uv run python -c "import sys; print('UV environment OK'); print(sys.version)"
+
+      - name: Export requirements from test environment
+        run: |
+          uv export --format requirements-txt --no-dev -o requirements-standard.generated.txt
+
+      - name: Compare generated requirements (non-blocking)
+        id: compare
+        run: |
+          if cmp -s requirements/requirements-standard.txt requirements-standard.generated.txt; then
+            echo "Requirements comparison: MATCH"
+            echo "match=true" >> "$GITHUB_OUTPUT"
+            echo "No differences found." > requirements-diff.txt
+          else
+            echo "Requirements comparison: DIFFER"
+            echo "match=false" >> "$GITHUB_OUTPUT"
+            diff -u requirements/requirements-standard.txt requirements-standard.generated.txt > requirements-diff.txt || true
+            echo "Differences were detected. Review artifact files for details."
+          fi
+
+      - name: Print comparison summary
+        run: |
+          echo "requirements match = ${{ steps.compare.outputs.match }}"
+
+      - name: Upload requirements comparison artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: uv-environment-check
+          path: |
+            requirements-standard.generated.txt
+            requirements-diff.txt
