@@ -6,8 +6,10 @@ resources:
       catalog: forecasting_dev
       schema: learning
       libraries:
-        - notebook:
-            path: ../../src/examples/pipeline_main.py
+        - file:
+            path: ../../src/examples/hello_world_pipeline.sql
+        # - notebook:
+        #     path: ../../src/examples/pipeline_main.py
       environment:
         dependencies:
           - -r ../../requirements/requirements-standard.txt
