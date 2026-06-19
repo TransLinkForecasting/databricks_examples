@@ -1,0 +1,19 @@
+resources:
+  jobs:
+    hello_world_example:
+      name: hello_world_example
+      tasks:
+        - task_key: hello_world
+          spark_python_task:
+            python_file: ../../src/02_databrick_hello_world.py
+            parameters:
+              - --examples-dir
+              - /Volumes/forecasting_dev/learning/files/examples
+          environment_key: default
+
+      environments:
+        - environment_key: default
+          spec:
+            environment_version: "4"
+            dependencies:
+              - -r ../../requirements/requirements-serverless.txt

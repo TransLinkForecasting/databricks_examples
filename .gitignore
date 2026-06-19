@@ -1,0 +1,5 @@
+.uv/*
+.venv/*
+.vscode/*
+.databricks/*
+examples/*.csv

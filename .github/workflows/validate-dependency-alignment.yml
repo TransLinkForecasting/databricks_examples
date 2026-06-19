@@ -1,0 +1,23 @@
+name: Validate Dependency Alignment
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate-dependency-artifact:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Verify lock and artifact alignment
+        shell: cmd
+        run: |
+          scripts\\check_requirements_drift.bat

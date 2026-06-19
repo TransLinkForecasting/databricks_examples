@@ -1,0 +1,18 @@
+bundle:
+  name: databricks-workspace-standard
+
+include:
+  - resources/jobs/*.yml
+  - resources/pipelines/*.yml
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://<your-databricks-workspace-host>
+
+  prod:
+    mode: production
+    workspace:
+      host: https://<your-databricks-workspace-host>

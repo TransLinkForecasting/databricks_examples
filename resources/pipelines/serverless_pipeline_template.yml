@@ -1,0 +1,13 @@
+resources:
+  pipelines:
+    standard_serverless_pipeline:
+      name: standard_serverless_pipeline
+      serverless: true
+      catalog: forecasting_dev
+      schema: learning
+      libraries:
+        - notebook:
+            path: ../../src/pipeline_main.py
+      environment:
+        dependencies:
+          - -r ../../requirements/requirements-serverless.txt

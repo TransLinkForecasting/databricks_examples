@@ -1,0 +1,38 @@
+[project]
+name = "databricks-workspace-standard"
+version = "0.1.0"
+description = "Shared dependency standard for Databricks workloads"
+# Constrain to versions currently supported by pinned modeling dependencies.
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "pip>=26.1.2",
+  "databricks-connect==17.3.*",
+  "databricks-sdk>=0.55.0",
+  "pydantic>=2.8.0",
+  "pyyaml>=6.0.2",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.4.1",
+  "pytest-cov>=6.2.1",
+  "ruff>=0.6.0",
+  "mypy>=1.5.0",
+  "pre-commit>=3.4.0",
+  #"tlpytools[dev,orca]>=0.1.29",
+]
+activitysim = [
+  "activitysim @ git+https://github.com/TransLinkForecasting/activitysim@tl_dev_pnr"
+]
+populationsim = [
+  "populationsim @ git+https://github.com/TransLinkForecasting/populationsim@master"
+]
+
+[tool.uv]
+required-version = ">=0.5.0"
+conflicts = [
+  [
+    { group = "activitysim" },
+    { group = "populationsim" },
+  ],
+]
