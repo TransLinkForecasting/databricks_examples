@@ -1,0 +1,39 @@
+bundle:
+  name: activitysim-mode-share-analysis
+
+sync:
+  exclude:
+    - "data/**"
+    - "*.ps1"
+    
+resources:
+  jobs:
+    mode_share_analysis:
+      name: activitysim-mode-share-analysis
+      description: Analyze trip and tour mode shares across ActivitySim iterations
+      parameters:
+        - name: base_path
+          default: /Volumes/forecasting_dev/learning/files/activitysim_test_output/outputs
+      tasks:
+        - task_key: analyze_mode_shares
+          spark_python_task:
+            python_file: src/examples/03_activitysim_summary_example.py
+            parameters:
+              - "{{job.parameters.base_path}}"
+          environment_key: default
+      environments:
+        - environment_key: default
+          spec:
+            environment_version: "5"
+            # Three ways to specify dependencies
+            #dependencies: []
+            dependencies:
+              - "-r ${workspace.file_path}/requirements/requirements_activitysim_example.txt"
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://yourdatabricks.azuredatabricks.net/
+      profile: sumitbindra
