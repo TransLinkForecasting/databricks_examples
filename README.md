@@ -7,22 +7,28 @@ Minimal Databricks bundle workspace with a single example:
 ## Quick Setup
 
 ```bat
-run_python_cmds.bat
+setup_python_env.bat
 ```
 
 Optional model groups:
 
 ```bat
-run_python_cmds.bat --group activitysim
-run_python_cmds.bat --group populationsim
+setup_python_env.bat --group activitysim
+setup_python_env.bat --group populationsim
 ```
+
+**Note**: The default group is now `activitysim`. Running `setup_python_env.bat` without `--group` will install activitysim dependencies.
+
+## Model-Specific Guides
+
+- **[Running ActivitySim](docs/RUN_ACTIVITYSIM.md)** - Complete guide for setting up and running ActivitySim models locally
 
 ## Hello World Run
 
 Generate and upload example CSV:
 
 ```bat
-run_python_cmds.bat src\examples\01_local_upload_data.py
+setup_python_env.bat src\examples\01_local_upload_data.py
 ```
 
 Deploy and run resources:
@@ -48,7 +54,7 @@ Use `notebooks/hello-world.ipynb` to run the same example interactively.
 Tip: run local upload first so the notebook has data to read:
 
 ```bat
-run_python_cmds.bat src\examples\01_local_upload_data.py
+setup_python_env.bat src\examples\01_local_upload_data.py
 ```
 
 ## Key Files
@@ -58,6 +64,8 @@ run_python_cmds.bat src\examples\01_local_upload_data.py
 - `resources/pipelines/hello_world_example.pipeline.yml`
 - `src/examples/01_local_upload_data.py`
 - `src/examples/02_databrick_hello_world.py`
+- `src/examples/03_run_activitysim.py`
 - `src/examples/hello_world_pipeline.sql`
 - `notebooks/hello-world.ipynb`
 - `notebooks/bootstrap/00_bootstrap_env.py`
+- `docs/RUN_ACTIVITYSIM.md`

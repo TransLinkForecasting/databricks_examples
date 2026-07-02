@@ -19,10 +19,10 @@ dev = [
   "ruff>=0.6.0",
   "mypy>=1.5.0",
   "pre-commit>=3.4.0",
-  #"tlpytools[dev,orca]>=0.1.29",
+  "tlpytools[dev,orca]>=0.2.0",
 ]
 activitysim = [
-  "activitysim @ git+https://github.com/TransLinkForecasting/activitysim@tl_dev_pnr"
+  "activitysim @ git+https://github.com/TransLinkForecasting/activitysim@tl_dev_pnr_260624"
 ]
 populationsim = [
   "populationsim @ git+https://github.com/TransLinkForecasting/populationsim@master"

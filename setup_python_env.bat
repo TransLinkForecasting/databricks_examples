@@ -7,7 +7,7 @@ cd /d "%ROOT%"
 set "UV_DIR=%ROOT%.uv"
 set "UV_EXE=%UV_DIR%\uv.exe"
 set "UV_ZIP=%TEMP%\uv-x86_64-pc-windows-msvc.zip"
-set "MODEL_GROUP="
+set "MODEL_GROUP=activitysim"
 
 if /I "%~1"=="--group" (
   if "%~2"=="" (
@@ -91,11 +91,12 @@ if "%~1"=="" (
   )
   echo [ok] uv: "%UV_EXE%"
   echo [ok] python: "%ROOT%.venv\Scripts\python.exe"
-  echo [hint] Run python with: run_python_cmds.bat -c "print('hello')"
-  echo [hint] Add model group with: run_python_cmds.bat --group activitysim
-  echo [hint] Or: run_python_cmds.bat --group populationsim
+  echo [hint] Run python with: setup_python_env.bat -c "print('hello')"
+  echo [hint] Add model group with: setup_python_env.bat --group activitysim
+  echo [hint] Or: setup_python_env.bat --group populationsim
   exit /b 0
 )
 
 "%ROOT%.venv\Scripts\python.exe" %*
+PAUSE
 exit /b %ERRORLEVEL%

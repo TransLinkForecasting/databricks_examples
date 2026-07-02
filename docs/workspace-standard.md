@@ -25,7 +25,7 @@ Define a deterministic dependency workflow for Databricks workloads while using 
 ### 3.3 Update Flow
 
 1. Modify `pyproject.toml`.
-2. Run `run_python_cmds.bat`.
+2. Run `setup_python_env.bat`.
 3. Or run `scripts/export_requirements.bat` if only refreshing requirements.
 4. Commit all changed files together.
 

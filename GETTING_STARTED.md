@@ -44,7 +44,7 @@ You do not need a global `uv` installation. This project bootstraps `uv` into `.
 From repository root:
 
 ```bat
-run_python_cmds.bat
+setup_python_env.bat
 ```
 
 This command bootstraps `.uv`, `.venv`, syncs dependencies, updates `uv.lock`, and exports `requirements/requirements-standard.txt`.
@@ -52,16 +52,16 @@ This command bootstraps `.uv`, `.venv`, syncs dependencies, updates `uv.lock`, a
 To include a model group, pass `--group` explicitly:
 
 ```bat
-run_python_cmds.bat --group activitysim
-run_python_cmds.bat --group populationsim
+setup_python_env.bat --group activitysim
+setup_python_env.bat --group populationsim
 ```
 
 ### Run local Python commands
 
 ```bat
-run_python_cmds.bat -c "import tlpytools; print('ok')"
-run_python_cmds.bat --group activitysim -c "print('using activitysim group')"
-run_python_cmds.bat --group populationsim -c "print('using populationsim group')"
+setup_python_env.bat -c "import tlpytools; print('ok')"
+setup_python_env.bat --group activitysim -c "print('using activitysim group')"
+setup_python_env.bat --group populationsim -c "print('using populationsim group')"
 ```
 
 ### Refresh requirements artifact only
@@ -105,7 +105,7 @@ This example flow:
 Run this from repository root (this is local only):
 
 ```bat
-run_python_cmds.bat src\examples\01_local_upload_data.py
+setup_python_env.bat src\examples\01_local_upload_data.py
 ```
 
 What this does:
@@ -156,7 +156,7 @@ Expected behavior:
 
 ## Recommended Team Workflow
 
-1. Run local setup (`run_python_cmds.bat`).
+1. Run local setup (`setup_python_env.bat`).
 2. Generate/upload test CSV (`src/examples/01_local_upload_data.py`).
 3. Deploy bundle and run job/pipeline examples.
 4. Keep `requirements/requirements-standard.txt` and `uv.lock` in sync.
